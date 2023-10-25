@@ -12,7 +12,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/checkout?customer_name=ramy u&total_amount=270",
+					"raw": "http://127.0.0.1:8000/checkout?customer_name=nourhan&total_amount=2705&product_id=1&customer_id=2&price=259",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -22,17 +22,28 @@
 					],
 					"port": "8000",
 					"path": [
-						"api",
 						"checkout"
 					],
 					"query": [
 						{
 							"key": "customer_name",
-							"value": "ramy u"
+							"value": "nourhan"
 						},
 						{
 							"key": "total_amount",
-							"value": "270"
+							"value": "2705"
+						},
+						{
+							"key": "product_id",
+							"value": "1"
+						},
+						{
+							"key": "customer_id",
+							"value": "2"
+						},
+						{
+							"key": "price",
+							"value": "259"
 						}
 					]
 				}
@@ -116,6 +127,92 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"message\": \"Checkout successful\",\n    \"order\": {\n        \"customer_name\": \"ramy u\",\n        \"total_amount\": \"270\",\n        \"status\": \"pending\",\n        \"updated_at\": \"2023-10-25T08:43:01.000000Z\",\n        \"created_at\": \"2023-10-25T08:43:01.000000Z\",\n        \"id\": 7\n    }\n}"
+				},
+				{
+					"name": "placing an order",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/checkout?customer_name=nourhan&total_amount=2705&product_id=1&customer_id=2&price=259",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"checkout"
+							],
+							"query": [
+								{
+									"key": "customer_name",
+									"value": "nourhan"
+								},
+								{
+									"key": "total_amount",
+									"value": "2705"
+								},
+								{
+									"key": "product_id",
+									"value": "1"
+								},
+								{
+									"key": "customer_id",
+									"value": "2"
+								},
+								{
+									"key": "price",
+									"value": "259"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Oct 2023 10:57:01 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 25 Oct 2023 10:57:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.3.33-14+ubuntu22.04.1+deb.sury.org+1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "XSRF-TOKEN=eyJpdiI6IkpOL0FNODdCSFdPUGtjTndEMHUyOGc9PSIsInZhbHVlIjoiRFN5UjZjcmNCQ2EvTG5ReWlqdUxaMkhMNlRuWW12VXc0WTBRR0s0RmVKQnYzSkVTWHRVNWtJRzF6SzlnU3UzZlFOZERrZ29GNWJPTXZMME1kcW5na0dwR1NmNHdtekdVT1A1K0p2WjVQbTQyN3F4QWJiRld4RGE5M1J4RFJieG4iLCJtYWMiOiJiMGY0YTI1NmY4MzcyZWY3NTk0OTFmNThiNWMyOTExY2Q1YzNjMDRkMWMyOTc0MGIyZDkxMmUxZTVjYmQ5OWIxIiwidGFnIjoiIn0%3D; expires=Thu, 26-Oct-2023 10:57:01 GMT; Max-Age=86400; path=/; samesite=lax"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "laravel_session=eyJpdiI6Ik9ZK1hMVXErYThIV3dIQTE0QVhIZWc9PSIsInZhbHVlIjoiSnFHWTN3bW1COVJXV3BaaE1ZS281dkp4eVhCb3pnUE9EN0pQZVp0ck5rY2cxalJ6S2VRYURUYjJyejBDbFFlbG9IS0x1dXdQSDdmUG9ITy9JNkRjaDIzV0hFQy9zanRwd2VNTUljaWQ5M0hSdU1WWDFTdDJZeDR3bXozak8wVDEiLCJtYWMiOiJlM2E0N2E2NTY3YWQxYjA4YTg4YjkzZDVkMzE4Mjk5ZDVmYmQwOThjMTJjMjQwYTM4ZjhiNTMzMWNiZGZlOTQ2IiwidGFnIjoiIn0%3D; expires=Thu, 26-Oct-2023 10:57:01 GMT; Max-Age=86400; path=/; httponly; samesite=lax"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Checkout successful\",\n    \"order\": {\n        \"customer_id\": \"2\",\n        \"product_id\": \"1\",\n        \"customer_name\": \"nourhan\",\n        \"price\": \"259\",\n        \"total_amount\": \"2705\"\n    }\n}"
 				}
 			]
 		},
