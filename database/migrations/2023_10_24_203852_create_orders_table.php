@@ -12,6 +12,9 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('customer_name');
             $table->decimal('total_amount', 8, 2);
+            $table->decimal('price', 8, 2);
+            $table->decimal('product_id', 8, 2);
+            $table->decimal('customer_id', 8, 2);
             $table->string('status');
             $table->timestamps();
         });

@@ -14,29 +14,41 @@ class CheckoutController extends Controller
         // Validate the request data
         $validatedData = $request->validate([
             'customer_name' => 'required|string',
+            'product_id' => 'required|numeric',
+            'customer_id' => 'required|numeric',
+            'price' => 'required|numeric',
             'total_amount' => 'required|numeric',
             // Add other validation rules as per your requirements
         ]);
 
         // Store the order in the session
         $order = [
+            'customer_id' => $validatedData['customer_id'],
+            'product_id' => $validatedData['product_id'],
             'customer_name' => $validatedData['customer_name'],
+            'price' => $validatedData['price'],
             'total_amount' => $validatedData['total_amount'],
             // Set other fields as needed
         ];
 
         $request->session()->put('order', $order);
 
-        // Create a new order in the database
-        $order = Order::create([
+        // Retrieve the order from the session
+        $order = $request->session()->get('order');
+
+        // // Create a new order in the database
+        Order::create([
             'customer_name' => $request->input('customer_name'),
             'total_amount' => $request->input('total_amount'),
+            'price' => $request->input('price'),
+            'product_id' => $request->input('product_id'),
+            'customer_id' => $request->input('customer_id'),
             'status' => 'pending',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
-        }
+        // if ($validatedData->fails()) {
+        //     return response()->json(['error' => $validatedData->errors()], 400);
+        // }
 
         // Return a response
         return response()->json(['message' => 'Checkout successful',"order" => $order]);
