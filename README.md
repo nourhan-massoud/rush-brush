@@ -7,9 +7,10 @@ The United Kingdom, The United Arab Emirates, Saudi Arabia, and The European Uni
 
 about this website
 
-dashboard : http://localhost:8000/admin
+run project with this command (php artisan serv)
+dashboard : http://domain/admin
 
-http://127.0.0.1:8000/admin/auth/login
+http://domin/admin/auth/login
 
 username : admin
 
