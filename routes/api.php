@@ -21,7 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/checkout', [CheckoutController::class, 'checkout']);
+// Route::post('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/productlist', [CheckoutController::class, 'productlist']);
 Route::get('/listorders', [CheckoutController::class, 'listorders']);
+Route::get('/order', [OrderController::class, 'getOrder']);
+
 

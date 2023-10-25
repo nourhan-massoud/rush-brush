@@ -12,9 +12,20 @@ class CheckoutController extends Controller
     public function checkout(Request $request)
     {
         // Validate the request data
-        $validator = Validator::make($request->all(), [
-            // Define your validation rules here
+        $validatedData = $request->validate([
+            'customer_name' => 'required|string',
+            'total_amount' => 'required|numeric',
+            // Add other validation rules as per your requirements
         ]);
+
+        // Store the order in the session
+        $order = [
+            'customer_name' => $validatedData['customer_name'],
+            'total_amount' => $validatedData['total_amount'],
+            // Set other fields as needed
+        ];
+
+        $request->session()->put('order', $order);
 
         // Create a new order in the database
         $order = Order::create([
@@ -29,6 +40,15 @@ class CheckoutController extends Controller
 
         // Return a response
         return response()->json(['message' => 'Checkout successful',"order" => $order]);
+    }
+
+    public function getOrder(Request $request)
+    {
+        // Retrieve the order from the session
+        $order = $request->session()->get('order');
+
+        // Return the order in the response
+        return response()->json(['order' => $order]);
     }
 
     public function listorders(Request $request)
